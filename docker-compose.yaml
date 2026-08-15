@@ -15,7 +15,7 @@ services:
       resources:
         limits:
           memory: 1G
-          cpus: 1
+          cpus: '1'
     volumes:
       - db-vol
   load-balancer:
@@ -38,7 +38,7 @@ services:
       resources:
         limits:
           memory: 256M
-          cpus: 0.5
+          cpus: '0.5'
   api-2:
     image: 2241998/fts-final:latest
     container_name: api-2
@@ -50,7 +50,7 @@ services:
       resources:
         limits:
           memory: 256M
-          cpus: 0.5
+          cpus: '0.5'
   api-3:
     image: 2241998/fts-final:latest
     container_name: api-3
@@ -62,7 +62,7 @@ services:
       resources:
         limits:
           memory: 256M
-          cpus: 0.5
+          cpus: '0.5'
 
 networks:
   fts-network:
