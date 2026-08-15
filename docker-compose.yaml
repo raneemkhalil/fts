@@ -8,7 +8,7 @@ services:
       POSTGRES_DB: "logs"
     ports:
       - "5432:5432"
-    command: ["postgres", "-c", "shared_preload_libraries=timescaledb"]
+    command: ["postgres", "-c", "shared_preload_libraries=timescaledb", "-c",  "max_connections=200"]
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres -d logs" ]
       interval: 5s
@@ -31,7 +31,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
   db-migrate:
     image: 2241998/fts-final-migrate:latest
     container_name: db-migrate
