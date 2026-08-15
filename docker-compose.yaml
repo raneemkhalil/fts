@@ -31,7 +31,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile
   db-migrate:
     image: 2241998/fts-final-migrate:latest
     container_name: db-migrate
