@@ -1,0 +1,5 @@
+localhost:8080
+
+reverse_proxy caddy1:8080 caddy2:8080 {
+	lb_policy       round_robin
+}

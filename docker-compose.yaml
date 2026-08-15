@@ -1,0 +1,69 @@
+version: "3.8"
+services:
+  db:
+    image: timescale/timescaledb:latest-pg15
+    container_name: fts-db
+    environment:
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: "logs"
+    ports:
+      - "5432:5432"
+    command: ["postgres", "-c", "shared_preload_libraries=timescaledb"]
+    networks:
+      - fts-network
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: 1
+    volumes:
+      - db-vol
+  load-balancer:
+    image: caddy
+    container_name: fts-balancer
+    networks:
+      - fts-network
+    ports:
+      - "8080:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+  api-1:
+    image: 2241998/fts-final:latest
+    container_name: api-1
+    networks:
+      - fts-network
+    volumes:
+      - fts-api-1-vol
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: 0.5
+  api-2:
+    image: 2241998/fts-final:latest
+    container_name: api-2
+    networks:
+      - fts-network
+    volumes:
+      - fts-api-1-vol
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: 0.5
+  api-3:
+    image: 2241998/fts-final:latest
+    container_name: api-3
+    networks:
+      - fts-network
+    volumes:
+      - fts-api-1-vol
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: 0.5
+
+networks:
+  fts-network:
+    driver: bridge
