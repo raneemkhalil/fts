@@ -51,6 +51,8 @@ services:
       SECRET: "tU0n5P1kUKv7MV2jafd+DfZfbSblLdxcElzgqHTofPQ="
       PORT: "8081"
       HOST: "db"
+      AUTH_ENABLED: "true"
+      LOADGEN_API_KEY: "mJqXE47fOZaadFOLVleFBTBl8Eo65CdW"
     depends_on:
       db-migrate:
         condition: service_completed_successfully
@@ -70,6 +72,8 @@ services:
       SECRET: "tU0n5P1kUKv7MV2jafd+DfZfbSblLdxcElzgqHTofPQ="
       PORT: "8082"
       HOST: "db"
+      AUTH_ENABLED: "true"
+      LOADGEN_API_KEY: "mJqXE47fOZaadFOLVleFBTBl8Eo65CdW"
     depends_on:
       db-migrate:
         condition: service_completed_successfully
@@ -89,6 +93,8 @@ services:
       SECRET: "tU0n5P1kUKv7MV2jafd+DfZfbSblLdxcElzgqHTofPQ="
       PORT: "8083"
       HOST: "db"
+      AUTH_ENABLED: "true"
+      LOADGEN_API_KEY: "mJqXE47fOZaadFOLVleFBTBl8Eo65CdW"
     depends_on:
       db-migrate:
         condition: service_completed_successfully
