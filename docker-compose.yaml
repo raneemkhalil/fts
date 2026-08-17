@@ -12,7 +12,7 @@ services:
       "-c", "shared_preload_libraries=timescaledb",
       "-c",  "max_connections=100",
       "-c", "shared_buffers=256MB",      # Allocates dedicated RAM for caching (25% of 1G limit)
-      "-c", "work_mem=16MB",             # Speeds up sorting/aggregations without CPU thrashing
+      "-c", "work_mem=4MB",             # Speeds up sorting/aggregations without CPU thrashing
       "-c", "maintenance_work_mem=64MB", # Speeds up hypertable chunk creation and indexing
       "-c", "synchronous_commit=off"     # Dramatically cuts write latency & CPU waiting time
     ]
