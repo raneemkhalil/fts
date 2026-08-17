@@ -38,6 +38,13 @@ services:
       - fts-network
     ports:
       - "8080:80"
+    depends_on:
+      api-1:
+        condition: service_started
+      api-2:
+        condition: service_started
+      api-3:
+        condition: service_started
     command: caddy reverse-proxy --from :80 --to api-1:8081 --to api-2:8082 --to api-3:8083
   db-migrate:
     image: 2241998/fts-final-migrate:latest
