@@ -61,7 +61,7 @@ services:
     networks:
       - fts-network
     volumes:
-      - fts-api-1-vol:/app/src
+      - fts-api-1-vol:/app/dist
     deploy:
       resources:
         limits:
@@ -82,7 +82,7 @@ services:
     networks:
       - fts-network
     volumes:
-      - fts-api-2-vol:/app/src
+      - fts-api-2-vol:/app/dist
     deploy:
       resources:
         limits:
@@ -103,7 +103,7 @@ services:
     networks:
       - fts-network
     volumes:
-      - fts-api-3-vol:/app/src
+      - fts-api-3-vol:/app/dist
     deploy:
       resources:
         limits:
